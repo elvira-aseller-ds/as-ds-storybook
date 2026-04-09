@@ -1,0 +1,19 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { spacing, radius } from "../tokens/tokens";
+import { ScaleTokenList } from "../components/ScaleTokenList";
+
+<Meta title="Foundations/Spacing & Radius" />
+
+# Spacing & Radius
+
+Токены расстояний и скруглений.
+
+## Правила
+
+- Использовать только системный шаг
+- Не применять случайные значения
+- Один и тот же тип расстояния = один и тот же token
+- Радиус должен быть согласован с типом контейнера
+
+<ScaleTokenList title="Spacing" tokens={spacing} />
+<ScaleTokenList title="Radius" tokens={radius} previewColor="#94A3B8" />

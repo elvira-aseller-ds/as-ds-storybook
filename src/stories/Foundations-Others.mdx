@@ -1,0 +1,32 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { otherTokens } from "../tokens/tokens";
+
+<Meta title="Foundations/Other" />
+
+# Other
+
+Прочие системные токены.
+
+## Правила
+
+- Использовать только по назначению
+- Не смешивать с основными token groups
+- При частом использовании переносить в отдельную группу
+
+<div style={{ display: "grid", gap: 12 }}>
+  {otherTokens.map((token) => (
+    <div
+      key={token.name}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "220px 1fr",
+        gap: 16,
+        paddingBottom: 12,
+        borderBottom: "1px solid #E5E7EB",
+      }}
+    >
+      <div>{token.name}</div>
+      <div>{token.value}</div>
+    </div>
+  ))}
+</div>

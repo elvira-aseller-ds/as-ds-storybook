@@ -1,0 +1,17 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { typography } from "../tokens/tokens";
+import { TypographyTokenList } from "../components/TypographyTokenList";
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+Типографическая шкала системы.
+
+## Правила
+
+- Использовать только системные text styles
+- Не задавать произвольные размеры текста
+- Иерархия определяется ролью текста
+
+<TypographyTokenList tokens={typography} />

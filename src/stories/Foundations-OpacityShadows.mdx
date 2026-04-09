@@ -1,0 +1,71 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { opacity, shadows } from "../tokens/tokens";
+
+<Meta title="Foundations/Opacity & Shadow" />
+
+# Opacity & Shadow
+
+Токены прозрачности и глубины.
+
+## Правила
+
+- Opacity использовать только для системных состояний
+- Shadow применять только для layer separation
+- Не создавать кастомные тени без нового уровня в системе
+
+## Opacity
+
+<div style={{ display: "grid", gap: 12, marginBottom: 32 }}>
+  {opacity.map((token) => (
+    <div
+      key={token.name}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "180px 120px 80px",
+        gap: 16,
+        alignItems: "center",
+      }}
+    >
+      <div>{token.name}</div>
+      <div
+        style={{
+          width: 80,
+          height: 40,
+          background: `rgba(68, 140, 192, ${parseInt(token.value, 10) / 100})`,
+          borderRadius: 8,
+          border: "1px solid rgba(0,0,0,0.06)",
+        }}
+      />
+      <div>{token.value}</div>
+    </div>
+  ))}
+</div>
+
+## Shadows
+
+<div style={{ display: "grid", gap: 16 }}>
+  {shadows.map((token) => (
+    <div
+      key={token.name}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "180px 120px 1fr",
+        gap: 16,
+        alignItems: "center",
+      }}
+    >
+      <div>{token.name}</div>
+      <div
+        style={{
+          width: 80,
+          height: 60,
+          background: "#fff",
+          borderRadius: 12,
+          boxShadow: token.value,
+          border: "1px solid rgba(0,0,0,0.04)",
+        }}
+      />
+      <div style={{ color: "#6B7280", fontSize: 14 }}>{token.value}</div>
+    </div>
+  ))}
+</div>

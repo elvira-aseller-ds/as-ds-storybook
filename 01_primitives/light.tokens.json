@@ -1,0 +1,247 @@
+{
+  "neutrals": {
+    "colorTextBase": "#001029",
+    "colorBgBase": "#FFFFFF",
+    "colorText": "rgba(0,0,0,0.88)",
+    "colorWhite": "rgba(255,255,255,1)",
+    "colorBlack": "rgba(0,0,0,0.88)",
+    "colorTextSecondary": "rgba(0,0,0,0.65)",
+    "colorTextTertiary": "rgba(0,0,0,0.45)",
+    "colorTextQuaternary": "rgba(0,0,0,0.25)",
+    "colorBgContainer": "#FFFFFF",
+    "colorBgElevated": "#FFFFFF",
+    "colorBgLayout": "#F8F8F8",
+    "colorBgSpotlight": "#F5F5F5",
+    "colorBorder": "#D9D9D9",
+    "colorBorderSecondary": "#F0F0F0",
+    "colorBorderSubtle": "#999999",
+    "colorBorderDefault": "#737373",
+    "colorBorderStrong": "#4D4D4D",
+    "colorBorderDisabled": "#BFBFBF",
+    "colorBgHover": "#EBEBEB",
+    "colorBgActive": "#E0E0E0",
+    "colorBgSelected": "#E6F4FF",
+    "colorFocusRing": "#1677FF",
+    "colorDividerSubtle": "#E6E6E6",
+    "color.surface.primary": "#FFFFFF",
+    "color.surface.secondary": "#F5F5F5",
+    "color.text.primary": "#001029",
+    "color.text.secondary": "rgba(0,16,41,0.65)",
+    "color.text.disabled": "rgba(0,16,41,0.25)",
+    "color.border.subtle": "#F0F0F0",
+    "color.border.default": "#D9D9D9",
+    "color.grid.header.bg": "#FFFFFF",
+    "color.grid.row.hover": "#F5F5F5",
+    "color.grid.text": "#001029"
+  },
+  "brand": {
+    "colorPrimary": "#1677FF",
+    "colorPrimaryHover": "#4096FF",
+    "colorPrimaryActive": "#0958D9",
+    "colorPrimaryBg": "#E6F4FF",
+    "colorPrimaryBgHover": "#BAE0FF",
+    "colorPrimaryBorder": "#91CAFF",
+    "colorPrimaryBorderHover": "#69B1FF",
+    "colorPrimaryText": "#1677FF",
+    "colorPrimaryTextHover": "#4096FF",
+    "colorPrimaryTextActive": "#0958D9",
+    "color.status.info": "#007BFF"
+  },
+  "success": {
+    "colorSuccess": "#00B746",
+    "colorSuccessHover": "#43D170",
+    "colorSuccessActive": "#00913D",
+    "colorSuccessBg": "#DFF7E4",
+    "colorSuccessBgHover": "#96EBAB",
+    "colorSuccessBorder": "#6ADE8B",
+    "colorSuccessText": "#00B746",
+    "colorSuccessTextHover": "#1FC459",
+    "colorSuccessTextActive": "#00913D",
+    "colorSuccessBorderHover": "#43D170",
+    "color.status.success": "#00B746"
+  },
+  "warning": {
+    "colorWarning": "#F3AF00",
+    "colorWarningHover": "#FFD952",
+    "colorWarningActive": "#CC8B00",
+    "colorWarningBg": "#FFFBE6",
+    "colorWarningBgHover": "#FFF1A3",
+    "colorWarningBorder": "#FFE77A",
+    "colorWarningBorderHover": "#FFD952",
+    "colorWarningText": "#F3AF00",
+    "colorWarningTextHover": "#FFC929",
+    "colorWarningTextActive": "#CC8B00",
+    "color.status.warning": "#F3AF00"
+  },
+  "danger": {
+    "colorError": "#DD0404",
+    "colorErrorHover": "#EB312A",
+    "colorErrorActive": "#B80006",
+    "colorErrorBg": "#FFEAE6",
+    "colorErrorBgHover": "#FFB4A8",
+    "colorErrorBorder": "#FF8C80",
+    "colorErrorBorderHover": "#F75F54",
+    "colorErrorText": "#DD0404",
+    "colorErrorTextHover": "#EB312A",
+    "colorErrorTextActive": "#B80006",
+    "color.status.error": "#DD0404"
+  },
+  "accent": {},
+  "alpha": {
+    "alpha-text-88": "rgba(0,0,0,0.88)",
+    "alpha-text-65": "rgba(0,0,0,0.65)",
+    "alpha-text-45": "rgba(0,0,0,0.45)",
+    "alpha-text-25": "rgba(0,0,0,0.25)"
+  },
+  "featureTag": {},
+  "featureTiles": {},
+  "radius": {
+    "radius-sm": 4,
+    "radius-md": 8,
+    "radius-lg": 12
+  },
+  "size": {
+    "size-base-height": 40,
+    "size-base-paddingX": 12,
+    "size-base-paddingY": 8,
+    "size-base-fontSize": 14,
+    "size-base-lineHeight": 20,
+    "size-base-iconSize": 16,
+    "size-base-minHitArea": 32,
+    "size-base-radius": 16,
+    "size-sm-height": 32,
+    "size-sm-paddingX": 8,
+    "size-sm-paddingY": 6,
+    "size-sm-fontSize": 13,
+    "size-sm-lineHeight": 18,
+    "size-sm-iconSize": 14,
+    "size-sm-minHitArea": 32,
+    "size-sm-radius": 16
+  },
+  "spacing": {
+    "spacing-4": 4,
+    "spacing-8": 8,
+    "spacing-16": 16,
+    "spacing-24": 24,
+    "spacing-32": 32,
+    "spacing-48": 48,
+    "spacing-64": 64
+  },
+  "opacity": {
+    "opacity-88": "88%",
+    "opacity-65": "65%",
+    "opacity-45": "45%",
+    "opacity-25": "25%"
+  },
+  "border": {
+    "border-width-1": "1px",
+    "border-width-2": "2px"
+  },
+  "font": {
+    "fontFamily": {
+      "value": "Rubik"
+    },
+    "letterSpacing": {
+      "value": "0.13px"
+    },
+    "fontSizeHeading1": {
+      "fontFamily": "Rubik",
+      "fontSize": 38,
+      "lineHeight": 38,
+      "fontWeight": 500,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeHeading2": {
+      "fontFamily": "Rubik",
+      "fontSize": 30,
+      "lineHeight": 30,
+      "fontWeight": 500,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeHeading3": {
+      "fontFamily": "Rubik",
+      "fontSize": 24,
+      "lineHeight": 24,
+      "fontWeight": 500,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeHeading4": {
+      "fontFamily": "Rubik",
+      "fontSize": 18,
+      "lineHeight": 20,
+      "fontWeight": 500,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeHeading5": {
+      "fontFamily": "Rubik",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "fontWeight": 500,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeLG": {
+      "fontFamily": "Rubik",
+      "fontSize": 16,
+      "lineHeight": 19,
+      "fontWeight": 400,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeM": {
+      "fontFamily": "Rubik",
+      "fontSize": 14,
+      "lineHeight": 19,
+      "fontWeight": 400,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeMStrong": {
+      "fontFamily": "Rubik",
+      "fontSize": 14,
+      "lineHeight": 19,
+      "fontWeight": 500,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeSM": {
+      "fontFamily": "Rubik",
+      "fontSize": 13,
+      "lineHeight": 16,
+      "fontWeight": 400,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeSMStrong": {
+      "fontFamily": "Rubik",
+      "fontSize": 13,
+      "lineHeight": 13,
+      "fontWeight": 500,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeS": {
+      "fontFamily": "Rubik",
+      "fontSize": 12,
+      "lineHeight": 16,
+      "fontWeight": 400,
+      "letterSpacing": "0.13px"
+    },
+    "fontSizeSStrong": {
+      "fontFamily": "Rubik",
+      "fontSize": 12,
+      "lineHeight": 19,
+      "fontWeight": 500,
+      "letterSpacing": "0.13px"
+    },
+    "font.weight.regular": {
+      "fontWeight": 400
+    },
+    "font.weight.medium": {
+      "fontWeight": 500
+    },
+    "font.weight.bold": {
+      "fontWeight": 600
+    }
+  },
+  "shadow": {
+    "elevation-sm": "0 1px 2px rgba(0,0,0,0.03), 0 1px 6px -1px rgba(0,0,0,0.02), 0 2px 4px rgba(0,0,0,0.02)",
+    "elevation-md": "0 6px 16px rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05)",
+    "elevation-lg": "0 12px 48px 16px rgba(0,0,0,0.08), 0 9px 28px rgba(0,0,0,0.05), 0 6px 16px -8px rgba(0,0,0,0.08)"
+  },
+  "zIndex": {}
+}

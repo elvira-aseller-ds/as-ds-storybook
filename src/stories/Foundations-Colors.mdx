@@ -1,0 +1,26 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { colors } from "../tokens/tokens";
+import { ColorTokenGrid } from "../components/ColorTokenGrid";
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+## Rules
+
+- Use semantic role, not raw color value
+- **Brand** — primary actions, links, focus rings
+- **Neutrals** — text, backgrounds, borders, dividers
+- **Accents** — status feedback: success, warning, error
+- **Alpha** — text opacity variants (88%, 65%, 45%, 25%)
+- **Additional** — app-level semantic aliases and AG Grid mappings
+
+{colors.neutrals && <ColorTokenGrid title="Neutrals" tokens={colors.neutrals} />}
+
+{colors.brand && <ColorTokenGrid title="Brand" tokens={colors.brand} />}
+
+{colors.accents && <ColorTokenGrid title="Accents (Success / Warning / Error)" tokens={colors.accents} />}
+
+{colors.alpha && <ColorTokenGrid title="Alpha" tokens={colors.alpha} />}
+
+{colors.additional && <ColorTokenGrid title="Additional (Semantic / Grid)" tokens={colors.additional} />}
