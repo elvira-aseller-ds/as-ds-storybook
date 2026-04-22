@@ -21,18 +21,7 @@ const preview: Preview = {
       const theme = context.globals.theme === 'dark' ? darkTheme : lightTheme;
       return (
         <ConfigProvider theme={theme}>
-          <div
-            style={{
-              background: 'var(--color-bg-page)',
-              color: 'var(--color-text-primary)',
-              fontFamily:
-                '"Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-              padding: 24,
-              minHeight: '100vh',
-            }}
-          >
-            <Story />
-          </div>
+          <Story />
         </ConfigProvider>
       );
     },
