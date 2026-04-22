@@ -1,0 +1,101 @@
+/* ASeller DS semantic tokens — CSS variables for both themes.
+   Kept in sync with src/tokens/aseller-tokens.ts */
+
+:root,
+[data-theme='light'] {
+  --color-action-primary: #007bff;
+  --color-action-primary-hover: #2997ff;
+  --color-action-primary-active: #0062d9;
+  --color-action-on-primary: #ffffff;
+
+  --color-text-primary: #001029;
+  --color-text-secondary: rgba(0, 16, 41, 0.65);
+  --color-text-disabled: rgba(0, 16, 41, 0.25);
+  --color-text-heading: #001029;
+  --color-text-inverse: #ffffff;
+  --color-text-link: #007bff;
+
+  --color-icon-default: #001029;
+  --color-icon-active: #007bff;
+  --color-icon-disabled: rgba(0, 16, 41, 0.25);
+
+  --color-bg-page: #f3f4f6;
+  --color-bg-surface: #ffffff;
+  --color-bg-elevated: #ffffff;
+  --color-bg-hover: rgba(0, 16, 41, 0.06);
+  --color-bg-active: rgba(0, 16, 41, 0.15);
+  --color-bg-selected: #e6f6ff;
+  --color-bg-selected-hover: #a3dcff;
+  --color-bg-backdrop: rgba(0, 16, 41, 0.45);
+  --color-bg-disabled: #f1f1f1;
+  --color-bg-subtle: #f9fafb;
+
+  --color-border-default: #d9d9d9;
+  --color-border-subtle: #f1f1f1;
+  --color-border-strong: #c7cdd4;
+  --color-border-focus: #007bff;
+  --color-border-brand: #7ac8ff;
+
+  --color-status-success: #00b746;
+  --color-status-success-bg: #dff7e4;
+  --color-status-warning: #f3af00;
+  --color-status-warning-bg: #fffce6;
+  --color-status-error: #dd0404;
+  --color-status-error-bg: #fff2f0;
+  --color-status-error-border: #ff8c80;
+
+  --space-xxs: 3px;
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 15px;
+  --space-lg: 20px;
+  --space-xl: 30px;
+  --space-2xl: 40px;
+
+  --radius-interactive: 4px;
+  --radius-surface: 8px;
+  --radius-card: 16px;
+}
+
+[data-theme='dark'] {
+  --color-action-primary: #4ca1de;
+  --color-action-primary-hover: #2997ff;
+  --color-action-primary-active: #7ac8ff;
+  --color-action-on-primary: #ffffff;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.65);
+  --color-text-disabled: rgba(255, 255, 255, 0.25);
+  --color-text-heading: #ffffff;
+  --color-text-inverse: #001029;
+  --color-text-link: #4ca1de;
+
+  --color-icon-default: #ffffff;
+  --color-icon-active: #4ca1de;
+  --color-icon-disabled: rgba(255, 255, 255, 0.25);
+
+  --color-bg-page: #2b2b34;
+  --color-bg-surface: #2b2b34;
+  --color-bg-elevated: #1f1f1f;
+  --color-bg-hover: rgba(255, 255, 255, 0.12);
+  --color-bg-active: rgba(255, 255, 255, 0.18);
+  --color-bg-selected: #253e51;
+  --color-bg-selected-hover: #387097;
+  --color-bg-backdrop: rgba(0, 16, 41, 0.45);
+  --color-bg-disabled: #303030;
+  --color-bg-subtle: #111827;
+
+  --color-border-default: #424242;
+  --color-border-subtle: #303030;
+  --color-border-strong: #4b5563;
+  --color-border-focus: #4ca1de;
+  --color-border-brand: #0062d9;
+
+  --color-status-success: #00b746;
+  --color-status-success-bg: #112118;
+  --color-status-warning: #f3af00;
+  --color-status-warning-bg: #2a2111;
+  --color-status-error: #dd0404;
+  --color-status-error-bg: #2c1618;
+  --color-status-error-border: #ff8c80;
+}
