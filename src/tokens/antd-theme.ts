@@ -57,10 +57,10 @@ function buildTheme(t: ThemeTokens, mode: 'light' | 'dark'): ThemeConfig {
         paddingInline: 15,
         paddingInlineSM: 7,
         paddingInlineLG: 15,
-        // Radius matches --radius-surface across all sizes.
-        borderRadius: t.radius.surface,
-        borderRadiusSM: t.radius.surface,
-        borderRadiusLG: t.radius.surface,
+        // Figma: all button sizes use --radius-card (16px).
+        borderRadius: t.radius.card,
+        borderRadiusSM: t.radius.card,
+        borderRadiusLG: t.radius.card,
 
         defaultBg: t.color.bgSurface,
         defaultColor: t.color.textPrimary,
