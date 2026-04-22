@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './Button';
-import { IconPlus, IconDelete, IconArrowForward } from '../../components/icons';
+import {
+  IconPlus,
+  IconDelete,
+  IconArrowForward,
+} from '../../components/icons';
 
 const meta = {
   title: '04_ATOMS/Button',
@@ -116,6 +120,10 @@ export const Danger: Story = {
       <Button type="dashed" danger>Dashed</Button>
       <Button type="link" danger>Link</Button>
       <Button type="text" danger>Text</Button>
+      <Button type="primary" danger icon={<IconDelete />}>
+        Delete
+      </Button>
+      <Button type="default" danger shape="circle" icon={<IconDelete />} />
     </div>
   ),
 };
@@ -143,6 +151,10 @@ export const WithIcon: Story = {
         Next
       </Button>
       <Button type="default" icon={<IconPlus />} />
+      <Button type="primary" danger icon={<IconDelete />}>
+        Delete
+      </Button>
+      <Button type="default" danger icon={<IconDelete />} />
     </div>
   ),
 };
