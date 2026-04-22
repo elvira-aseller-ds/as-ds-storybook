@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/addon-docs/blocks";
-import { otherTokens } from "../tokens/tokens";
+import { border, zIndex } from "../tokens/tokens";
 
 <Meta title="Foundations/Other" />
 
@@ -13,8 +13,30 @@ import { otherTokens } from "../tokens/tokens";
 - Не смешивать с основными token groups
 - При частом использовании переносить в отдельную группу
 
+## Border
+
+<div style={{ display: "grid", gap: 12, marginBottom: 32 }}>
+  {border.map((token) => (
+    <div
+      key={token.name}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "220px 1fr",
+        gap: 16,
+        paddingBottom: 12,
+        borderBottom: "1px solid #E5E7EB",
+      }}
+    >
+      <div>{token.name}</div>
+      <div>{token.value}</div>
+    </div>
+  ))}
+</div>
+
+## Z-index
+
 <div style={{ display: "grid", gap: 12 }}>
-  {otherTokens.map((token) => (
+  {zIndex.map((token) => (
     <div
       key={token.name}
       style={{
