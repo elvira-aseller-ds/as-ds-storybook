@@ -6,14 +6,17 @@ import { ScaleTokenList } from "../components/ScaleTokenList";
 
 # Spacing & Radius
 
-Токены расстояний и скруглений.
+Source: Figma `02 Semantic` (`35:3020`).
 
 ## Правила
 
 - Использовать только системный шаг
 - Не применять случайные значения
 - Один и тот же тип расстояния = один и тот же token
-- Радиус должен быть согласован с типом контейнера
+- Радиус должен быть согласован с типом контейнера:
+  - `interactive` (4px) — мелкие элементы, чекбоксы
+  - `surface` (8px) — обычные surface-контейнеры, инпуты
+  - `card` (16px) — карточки и кнопки
 
-<ScaleTokenList title="Spacing" tokens={spacing} />
-<ScaleTokenList title="Radius" tokens={radius} previewColor="#94A3B8" />
+<ScaleTokenList title="Spacing" tokens={spacing} previewColor="var(--color-action-primary)" />
+<ScaleTokenList title="Radius" tokens={radius} previewColor="var(--color-border-brand)" mode="radius" />

@@ -9,6 +9,28 @@ body {
   font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/* Storybook Docs iframe — override default white backgrounds so that
+   dark theme propagates to MDX pages and embedded Stories alike. */
+[data-theme] .sbdocs.sbdocs-wrapper,
+[data-theme] .sbdocs.sbdocs-content,
+[data-theme] .sbdocs-preview,
+[data-theme] .docs-story,
+[data-theme] .docs-story > div {
+  background: var(--color-bg-page) !important;
+  color: var(--color-text-primary);
+}
+
+[data-theme='dark'] .sbdocs.sbdocs-wrapper h1,
+[data-theme='dark'] .sbdocs.sbdocs-wrapper h2,
+[data-theme='dark'] .sbdocs.sbdocs-wrapper h3,
+[data-theme='dark'] .sbdocs.sbdocs-wrapper h4,
+[data-theme='dark'] .sbdocs.sbdocs-wrapper p,
+[data-theme='dark'] .sbdocs.sbdocs-wrapper li,
+[data-theme='dark'] .sbdocs.sbdocs-wrapper td,
+[data-theme='dark'] .sbdocs.sbdocs-wrapper th {
+  color: var(--color-text-primary);
+}
+
 
 :root,
 [data-theme='light'] {
@@ -64,6 +86,82 @@ body {
   --radius-interactive: 4px;
   --radius-surface: 8px;
   --radius-card: 16px;
+
+  /* Typography — Figma 35:4619 */
+  --font-family-base: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-code: 'Rubik', monospace;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-size-5xl: 38px;
+
+  --line-height-xs: 16px;
+  --line-height-sm: 19px;
+  --line-height-md: 22px;
+  --line-height-lg: 30px;
+  --line-height-xl: 36px;
+  --line-height-2xl: 44px;
+
+  --letter-spacing-default: 0.13px;
+  --letter-spacing-zero: 0;
+
+  /* Composite text styles */
+  --text-heading-1-font-size: var(--font-size-5xl);
+  --text-heading-1-line-height: 38px;
+  --text-heading-1-font-weight: var(--font-weight-medium);
+
+  --text-heading-2-font-size: var(--font-size-4xl);
+  --text-heading-2-line-height: 30px;
+  --text-heading-2-font-weight: var(--font-weight-medium);
+
+  --text-heading-3-font-size: var(--font-size-3xl);
+  --text-heading-3-line-height: 24px;
+  --text-heading-3-font-weight: var(--font-weight-medium);
+
+  --text-heading-4-font-size: var(--font-size-xl);
+  --text-heading-4-line-height: 20px;
+  --text-heading-4-font-weight: var(--font-weight-medium);
+
+  --text-heading-5-font-size: var(--font-size-lg);
+  --text-heading-5-line-height: var(--font-size-3xl);
+  --text-heading-5-font-weight: var(--font-weight-medium);
+
+  --text-body-lg-font-size: var(--font-size-lg);
+  --text-body-lg-line-height: var(--line-height-sm);
+  --text-body-lg-font-weight: var(--font-weight-regular);
+
+  --text-body-md-font-size: var(--font-size-md);
+  --text-body-md-line-height: var(--line-height-sm);
+  --text-body-md-font-weight: var(--font-weight-regular);
+
+  --text-body-md-strong-font-size: var(--font-size-md);
+  --text-body-md-strong-line-height: var(--line-height-sm);
+  --text-body-md-strong-font-weight: var(--font-weight-medium);
+
+  --text-body-sm-font-size: var(--font-size-sm);
+  --text-body-sm-line-height: var(--line-height-xs);
+  --text-body-sm-font-weight: var(--font-weight-regular);
+
+  --text-body-sm-strong-font-size: var(--font-size-sm);
+  --text-body-sm-strong-line-height: var(--font-size-sm);
+  --text-body-sm-strong-font-weight: var(--font-weight-medium);
+
+  --text-caption-md-font-size: var(--font-size-xs);
+  --text-caption-md-line-height: var(--line-height-xs);
+  --text-caption-md-font-weight: var(--font-weight-regular);
+
+  --text-caption-md-strong-font-size: var(--font-size-xs);
+  --text-caption-md-strong-line-height: var(--line-height-sm);
+  --text-caption-md-strong-font-weight: var(--font-weight-medium);
 }
 
 [data-theme='dark'] {

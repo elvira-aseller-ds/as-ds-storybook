@@ -1,17 +1,35 @@
 import { Meta } from "@storybook/addon-docs/blocks";
-import { font } from "../tokens/tokens";
+import { font, fontSizes, lineHeights } from "../tokens/tokens";
 import { TypographyTokenList } from "../components/TypographyTokenList";
+import { ScaleTokenList } from "../components/ScaleTokenList";
 
 <Meta title="Foundations/Typography" />
 
 # Typography
 
-Типографическая шкала системы.
+Source: Figma `03 Typography` (`35:4619`).
 
 ## Правила
 
 - Использовать только системные text styles
 - Не задавать произвольные размеры текста
-- Иерархия определяется ролью текста
+- Иерархия определяется ролью текста (heading / body / caption)
+- Composite-токены (`text-heading-1` и т.п.) — основной API, сырые `--font-size-*` применять только при необходимости
 
-<TypographyTokenList tokens={font} />
+## Composite text styles
+
+Готовые к применению стили: размер + высота строки + вес + межбуквенное расстояние в одном токене.
+
+<TypographyTokenList tokens={font.filter((t) => t.fontSize != null)} />
+
+## Font size scale
+
+<ScaleTokenList title="Font size" tokens={fontSizes} previewColor="var(--color-action-primary)" />
+
+## Line height scale
+
+<ScaleTokenList title="Line height" tokens={lineHeights} previewColor="var(--color-border-strong)" />
+
+## Font family / weight / letter spacing
+
+<TypographyTokenList tokens={font.filter((t) => t.fontSize == null)} />

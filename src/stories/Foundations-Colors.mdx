@@ -6,21 +6,32 @@ import { ColorTokenGrid } from "../components/ColorTokenGrid";
 
 # Colors
 
-## Rules
+Source: Figma `02 Semantic` (`35:3020`) + используемые Primitives из `01 Primitives` (`32:3074`).
+
+## Правила
 
 - Use semantic role, not raw color value
-- **Brand** — primary actions, links, focus rings
-- **Neutrals** — text, backgrounds, borders, dividers
-- **Accents** — status feedback: success, warning, error
-- **Alpha** — text opacity variants (88%, 65%, 45%, 25%)
-- **Additional** — app-level semantic aliases and AG Grid mappings
+- **Action** — primary actions, links, focus rings
+- **Text / Icon** — content roles, с alpha-вариантами для иерархии
+- **Background** — слои поверхности: page → surface → elevated
+- **Border** — разделители и состояния контролов
+- **Status** — success / warning / error
+- На каждом swatch слева — light, справа — dark тема
 
-{colors.neutrals && <ColorTokenGrid title="Neutrals" tokens={colors.neutrals} />}
+## Semantic
 
-{colors.brand && <ColorTokenGrid title="Brand" tokens={colors.brand} />}
+<ColorTokenGrid title="Action" tokens={colors.action} />
+<ColorTokenGrid title="Text" tokens={colors.text} />
+<ColorTokenGrid title="Icon" tokens={colors.icon} />
+<ColorTokenGrid title="Background" tokens={colors.background} />
+<ColorTokenGrid title="Border" tokens={colors.border} />
+<ColorTokenGrid title="Status" tokens={colors.status} />
 
-{colors.accents && <ColorTokenGrid title="Accents (Success / Warning / Error)" tokens={colors.accents} />}
+## Primitives (used)
 
-{colors.alpha && <ColorTokenGrid title="Alpha" tokens={colors.alpha} />}
+Только те ступени, на которые реально ссылаются semantic-токены выше.
 
-{colors.additional && <ColorTokenGrid title="Additional (Semantic / Grid)" tokens={colors.additional} />}
+<ColorTokenGrid title="Grey" tokens={colors.primitivesGrey} showDark={false} />
+<ColorTokenGrid title="Blue" tokens={colors.primitivesBlue} showDark={false} />
+<ColorTokenGrid title="Status (Red / Green / Yellow)" tokens={colors.primitivesStatus} showDark={false} />
+<ColorTokenGrid title="Alpha" tokens={colors.primitivesAlpha} showDark={false} />

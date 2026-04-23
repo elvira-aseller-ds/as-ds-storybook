@@ -4,14 +4,27 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # Foundations
 
-Базовый слой дизайн-системы.
+Базовый слой дизайн-системы ASeller DS.
 
 Содержит системные токены, которые используются во всех:
 - компонентах
 - паттернах
 - фичах
 
-## Состав
+## Три уровня токенов
+
+Source: ASeller Figma Kit (`VMTYDDrmUYtsva4gGPVEcg`)
+
+| Слой | Figma node | Что содержит |
+| --- | --- | --- |
+| **01 Primitives** | `32:3074` | Физические шкалы: Grey / Blue / Red / Green / Yellow, размеры контролов |
+| **02 Semantic** | `35:3020` | Роли: Action / Text / Icon / Background / Border / Status — с light/dark парой |
+| **03 Typography** | `35:4619` | Font-size, family, weight, line-height, letter-spacing + composite text styles |
+| Component tokens | — | Локальные overrides внутри компонентов (antd `components.Button` и т.д.) |
+
+**Правило подчинения:** Component → Semantic → Primitive. Компонент не должен ссылаться на Primitive напрямую.
+
+## Состав Foundations
 
 - Colors
 - Spacing & Radius

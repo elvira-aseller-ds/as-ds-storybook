@@ -1,14 +1,16 @@
 import { Meta } from "@storybook/addon-docs/blocks";
+import { size } from "../tokens/tokens";
+import { ScaleTokenList } from "../components/ScaleTokenList";
 
 <Meta title="Foundations/Size" />
 
 # Size
 
-Размерные токены для элементов и контейнеров.
+Размерные токены для элементов и контейнеров. Source: Figma `01 Primitives` (`32:3074`).
 
 ## Использование
 
-- controls
+- controls (buttons, inputs, selects)
 - icons
 - cells
 - cards
@@ -19,3 +21,6 @@ import { Meta } from "@storybook/addon-docs/blocks";
 - Размер определяется token scale
 - Одинаковые сущности должны иметь одинаковый размер
 - Не использовать произвольные width / height без причины
+- Button height = control height — semantic Small=22, Middle=32, Large=40
+
+<ScaleTokenList title="Control height" tokens={size} previewColor="var(--color-action-primary)" mode="height" />

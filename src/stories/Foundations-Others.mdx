@@ -13,9 +13,9 @@ import { border, zIndex } from "../tokens/tokens";
 - Не смешивать с основными token groups
 - При частом использовании переносить в отдельную группу
 
-## Border
+## Border width
 
-<div style={{ display: "grid", gap: 12, marginBottom: 32 }}>
+<div style={{ display: "grid", gap: 8, marginBottom: 32 }}>
   {border.map((token) => (
     <div
       key={token.name}
@@ -23,32 +23,40 @@ import { border, zIndex } from "../tokens/tokens";
         display: "grid",
         gridTemplateColumns: "220px 1fr",
         gap: 16,
-        paddingBottom: 12,
-        borderBottom: "1px solid #E5E7EB",
+        paddingBottom: 8,
+        borderBottom: "1px solid var(--color-border-subtle)"
       }}
     >
-      <div>{token.name}</div>
-      <div>{token.value}</div>
+      <div style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: "var(--color-text-secondary)" }}>
+        {token.name}
+      </div>
+      <div style={{ color: "var(--color-text-primary)", fontSize: 13 }}>{token.value}</div>
     </div>
   ))}
 </div>
 
 ## Z-index
 
-<div style={{ display: "grid", gap: 12 }}>
-  {zIndex.map((token) => (
-    <div
-      key={token.name}
-      style={{
-        display: "grid",
-        gridTemplateColumns: "220px 1fr",
-        gap: 16,
-        paddingBottom: 12,
-        borderBottom: "1px solid #E5E7EB",
-      }}
-    >
-      <div>{token.name}</div>
-      <div>{token.value}</div>
+{zIndex.length === 0 && (
+  <p style={{ color: "var(--color-text-secondary)" }}>
+    В Figma `01_FOUNDATIONS` z-index-слои пока не определены. Раздел будет заполнен, когда появятся соответствующие токены.
+  </p>
+)}
+
+{zIndex.map((token) => (
+  <div
+    key={token.name}
+    style={{
+      display: "grid",
+      gridTemplateColumns: "220px 1fr",
+      gap: 16,
+      paddingBottom: 8,
+      borderBottom: "1px solid var(--color-border-subtle)"
+    }}
+  >
+    <div style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: "var(--color-text-secondary)" }}>
+      {token.name}
     </div>
-  ))}
-</div>
+    <div style={{ color: "var(--color-text-primary)", fontSize: 13 }}>{token.value}</div>
+  </div>
+))}
