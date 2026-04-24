@@ -7,7 +7,7 @@ import {
 } from '../../components/icons';
 
 const meta = {
-  title: '04_ATOMS/Button',
+  title: 'Shared components/Button',
   component: Button,
   parameters: {
     layout: 'centered',
@@ -49,7 +49,9 @@ type Story = StoryObj<typeof meta>;
 
 // --- Core playground --------------------------------------------------------
 
-export const Playground: Story = {};
+export const Playground: Story = {
+  tags: ['!dev'],
+};
 
 // --- By type ----------------------------------------------------------------
 
@@ -65,6 +67,7 @@ const typeRow = (size: 'small' | 'middle' | 'large') => (
 );
 
 export const Types: Story = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       {typeRow('large')}
@@ -77,6 +80,7 @@ export const Types: Story = {
 // --- Sizes ------------------------------------------------------------------
 
 export const Sizes: Story = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
       <Button size="large">Large</Button>
@@ -89,6 +93,7 @@ export const Sizes: Story = {
 // --- States -----------------------------------------------------------------
 
 export const States: Story = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div style={{ display: 'flex', gap: 12 }}>
@@ -113,6 +118,7 @@ export const States: Story = {
 // --- Danger -----------------------------------------------------------------
 
 export const Danger: Story = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
       <Button type="primary" danger>Primary</Button>
@@ -131,6 +137,7 @@ export const Danger: Story = {
 // --- Shape ------------------------------------------------------------------
 
 export const Shapes: Story = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
       <Button type="primary" shape="default" icon={<IconPlus />}>Default</Button>
@@ -144,6 +151,7 @@ export const Shapes: Story = {
 // --- With icon --------------------------------------------------------------
 
 export const WithIcon: Story = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
       <Button type="primary" icon={<IconPlus />}>Create</Button>
@@ -162,6 +170,7 @@ export const WithIcon: Story = {
 // --- Block ------------------------------------------------------------------
 
 export const Block: Story = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ width: 320, display: 'flex', flexDirection: 'column', gap: 12 }}>
       <Button type="primary" block>Primary block</Button>
@@ -174,6 +183,7 @@ export const Block: Story = {
 // --- Matrix (for visual regression in Chromatic) ----------------------------
 
 export const Matrix: Story = {
+  tags: ['!dev'],
   parameters: { layout: 'fullscreen' },
   render: () => {
     const types: Array<'primary' | 'default' | 'dashed' | 'ghost' | 'link' | 'text'> =

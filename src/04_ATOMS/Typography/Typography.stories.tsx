@@ -6,7 +6,7 @@ import { Title } from './Title';
 import { Label } from './Label';
 
 const meta = {
-  title: '04_ATOMS/Typography',
+  title: 'Shared components/Typography',
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -44,6 +44,7 @@ const LABEL_TYPES = ['default', 'secondary', 'disabled', 'white', 'primary', 'er
 // Overview — все 4 семейства на одной странице
 // ---------------------------------------------------------------------------
 export const Overview: Story = {
+  tags: ['!dev'],
   render: () => (
     <div>
       <Section title="Title">
@@ -93,6 +94,7 @@ export const Overview: Story = {
 // ---------------------------------------------------------------------------
 
 export const TitleLevels: Story = {
+  tags: ['!dev'],
   render: () => (
     <Section title="Title — Level × Type">
       <Row label="h1"><Title level={1}>Ag Заголовок</Title><Title level={1} skeleton /></Row>
@@ -105,6 +107,7 @@ export const TitleLevels: Story = {
 };
 
 export const TextMatrix: Story = {
+  tags: ['!dev'],
   render: () => (
     <Section title="Text — Size × Strong × State">
       {(['sm', 'base', 'lg'] as const).map((size) => (
@@ -117,6 +120,7 @@ export const TextMatrix: Story = {
 };
 
 export const LinkMatrix: Story = {
+  tags: ['!dev'],
   render: () => (
     <Section title="Link — Size × Type × Disabled">
       {(['sm', 'base', 'lg'] as const).map((size) => (
@@ -132,6 +136,7 @@ export const LinkMatrix: Story = {
 };
 
 export const LabelMatrix: Story = {
+  tags: ['!dev'],
   render: () => (
     <Section title="Label — Size × Type × Strong × Inverse">
       {(['sm', 'default'] as const).map((size) => (
