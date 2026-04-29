@@ -1,0 +1,127 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as FormStories from './Form.stories';
+
+<Meta of={FormStories} />
+
+# Form
+
+Семейство `Form` + `Form.Item` — обёртка над antd, темизованная через ConfigProvider. Используется как контейнер для **группы полей** с валидацией, layout-ом и состоянием.
+
+Figma source: [Form/Item COMPONENT_SET (820:192677)](https://www.figma.com/design/VMTYDDrmUYtsva4gGPVEcg/ASeller-DS-v0.1.0?node-id=820-192677).
+
+## Соответствие AntDesign
+
+```jsx
+<Form layout="vertical" onFinish={onFinish}>
+  <Form.Item
+    label="SKU"                  // Label property
+    name="sku"
+    required                     // Required boolean
+    tooltip="Per box quantity"   // HasTooltip + tooltip text
+    help="Helper description"    // HasHelp + HelpText
+    validateStatus="error"       // ValidateStatus axis
+    hasFeedback                  // shown automatically
+  >
+    <Input size="middle" />      {/* Control slot — swap to Select / DatePicker / etc */}
+  </Form.Item>
+</Form>
+```
+
+<table>
+  <thead>
+    <tr><th>Figma property</th><th>AntD prop</th><th>Что делает</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>`Layout` (variant)</td><td>`Form` `layout`</td><td>`vertical` / `horizontal` / `inline`</td></tr>
+    <tr><td>`ValidateStatus` (variant)</td><td>`Form.Item` `validateStatus`</td><td>`''` / `error` / `warning` / `success`</td></tr>
+    <tr><td>`Required` (boolean)</td><td>`Form.Item` `required`</td><td>Красная `*` перед label</td></tr>
+    <tr><td>`HasTooltip` (boolean)</td><td>`Form.Item` `tooltip`</td><td>Иконка ⓘ справа от label</td></tr>
+    <tr><td>`HasHelp` (boolean)</td><td>`Form.Item` `help`</td><td>Подпись под контролом, secondary color</td></tr>
+    <tr><td>`Disabled` (boolean)</td><td>`Form` `disabled`</td><td>Отключает все вложенные контролы</td></tr>
+    <tr><td>`Label` (text)</td><td>`Form.Item` `label`</td><td>Текст метки поля</td></tr>
+    <tr><td>`HelpText` (text)</td><td>`Form.Item` `help`</td><td>Описание / сообщение валидации</td></tr>
+    <tr><td>`Control` (instance-swap)</td><td>`children`</td><td>Поле ввода (Input / Select / DatePicker / Switch / Checkbox / InputNumber / TextArea)</td></tr>
+    <tr><td>**Size — на самом контроле**</td><td>`Input` `size`, `Select` `size`, …</td><td>`small` (22) / `middle` (32) / `large` (40) — **не на Form.Item**</td></tr>
+  </tbody>
+</table>
+
+### Не используется из AntD
+
+- `name`, `rules`, `dependencies`, `getValueFromEvent` — runtime-only, не визуальные.
+- `colon`, `labelCol`, `wrapperCol` — конфиг layout-а; `Layout=Vertical|Horizontal` покрывает основные кейсы.
+- `extra` — дополнительная информация под help; вкладывается в `HelpText` при необходимости.
+
+## Рекомендации по использованию
+
+**Layout**
+- `vertical` — стандарт. Label сверху, контрол снизу. Используй везде, где форма не требует компактности.
+- `horizontal` — label слева (фикс. ширина 120–200px). Применяй для **settings-страниц**, форм с многими короткими полями.
+- `inline` — поля в строку. Только для **toolbar-фильтров** (Search + Date range и т.п.).
+
+**Контролы (Control slot)**
+- Текст → `Input` (с `prefix={<IconUser />}` для семантической иконки).
+- Email → `Input type="email"` + `prefix={<IconMail />}`.
+- Пароль → `Input.Password` (антд автоматически даёт eye-toggle в suffix).
+- Числа с шагом → `InputNumber`.
+- Выбор из списка → `Select`.
+- Дата → `DatePicker`. Диапазон → `DatePicker.RangePicker`.
+- Boolean toggle → `Switch` (для on/off) или `Checkbox` (для согласия с условиями).
+- Множественный выбор → `Checkbox.Group` или `Select mode="multiple"`.
+
+**Размеры**
+- `size="middle"` (32px) — основной размер платформы.
+- `size="small"` (22px) — фильтры, toolbar, плотные таблицы, inline-edit.
+- `size="large"` (40px) — auth-формы (login/register), главные действия, mobile-first экраны.
+- **Размер задаётся на контроле**, не на `Form` — это nested prop swap_instance компонента.
+
+**Валидация**
+- `error` — поле обязательно, или формат не прошёл. Подпись под полем с детальным сообщением.
+- `warning` — значение допустимо, но необычно (резервно используется).
+- `success` + `hasFeedback` — пройдена дополнительная проверка (уникальность, доступность); зелёная иконка справа.
+- Default — без валидации, чистое состояние.
+
+**Required + Tooltip**
+- `required` показывает красную *. Используй на всех обязательных полях.
+- `tooltip` — для пояснений, которые слишком длинные для help. Иконка ⓘ справа от label.
+
+**Disabled**
+- Целая форма: `<Form disabled>` — рекомендованный путь, antd сам прокинет вниз.
+- Отдельное поле: `<Input disabled>` на конкретном контроле.
+
+## Чеклист QA
+
+### Структура
+- [ ] Форма обёрнута в `<Form>` (а не просто `<div>`)
+- [ ] Каждое поле — в `<Form.Item label>` (без отрыва от формы)
+- [ ] У каждого `Form.Item` есть `name` (для управления значениями)
+- [ ] Submit-кнопки **снаружи** Form.Item-полей (отдельный footer-row)
+
+### Типографика и цвета
+- [ ] Шрифт Rubik во всех label/help/validation текстах (не Inter)
+- [ ] Цвета через токены — `--color-text-primary`, `--color-text-secondary`, `--color-status-*`
+- [ ] Required mark — `--color-status-error`
+- [ ] Help text — `--color-text-secondary`, font-size sm
+
+### Размеры
+- [ ] Высота контролов: `small=22`, `middle=32`, `large=40`
+- [ ] Border-radius: `--radius-card` (16px) для всех Form-контролов
+- [ ] Gap между Form.Item: 15px (`--space-md`) по вертикали
+
+### Валидация
+- [ ] Error: красная рамка контрола, красная подпись под полем
+- [ ] Warning: жёлтая рамка, жёлтая подпись
+- [ ] Success + hasFeedback: зелёная иконка справа от value
+- [ ] Required *: видна перед label
+
+### Поведение
+- [ ] Form auto-layout: ширина Fill, высота Hug — растёт под validation/help
+- [ ] При смене темы (light/dark) все цвета перекрашиваются автоматически
+- [ ] Disabled-форма: ни один контрол не реагирует на focus/click
+- [ ] Tab-порядок: по визуальной иерархии (label → control → next field)
+
+### AntD-Ready
+- [ ] Имя в Figma — `Form/Item` (с слэшем-вложенностью)
+- [ ] Description содержит блок `ANTD MAPPING` и `NOT USED FROM ANTD`
+- [ ] Все контролы внутри Form.Item — это инстансы существующих atoms (Input/Select/...)
+- [ ] Переключение Required/HasTooltip/HasHelp/Disabled — boolean-проперти, не отдельные variants
+- [ ] Size прокидывается во вложенный контрол (nested prop), не задаётся на Form.Item

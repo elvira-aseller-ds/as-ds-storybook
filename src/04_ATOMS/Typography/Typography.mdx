@@ -1,0 +1,190 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as TypographyStories from './Typography.stories';
+
+<Meta of={TypographyStories} />
+
+# Typography
+
+Семейство компонентов для всего текстового контента: `Text` / `Link` / `Title` / `Label`. Все построены на antd `Typography.*` (кроме `Label` — собственный span с ASeller text-styles, поскольку у antd нет аналога).
+
+Figma source: [Typography (638:114057)](https://www.figma.com/design/VMTYDDrmUYtsva4gGPVEcg/ASeller-DS-v0.1.0?node-id=638-114057).
+
+## Состав семейства
+
+<table>
+  <thead>
+    <tr><th>Компонент</th><th>Назначение</th><th>AntD соответствие</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>`Title`</td><td>Заголовки 1–5 уровня (страница / секция / карточка)</td><td>`Typography.Title`</td></tr>
+    <tr><td>`Text`</td><td>Параграфы, inline-текст, описания</td><td>`Typography.Text`</td></tr>
+    <tr><td>`Link`</td><td>Ссылки внутри текста и в навигации</td><td>`Typography.Link`</td></tr>
+    <tr><td>`Label`</td><td>Метки, теги, статусы — короткий inline-текст с цветовой ролью</td><td>— (свой компонент)</td></tr>
+  </tbody>
+</table>
+
+## Соответствие AntDesign
+
+### Title
+
+```jsx
+<Title
+  level={1}            // Level: 1 / 2 / 3 / 4 / 5
+  skeleton={false}     // Skeleton: показать placeholder
+>
+  Ag Заголовок
+</Title>
+```
+
+<table>
+  <thead>
+    <tr><th>Figma</th><th>AntD prop</th><th>Что делает</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>`Level` (variant)</td><td>`Typography.Title` `level`</td><td>`1` / `2` / `3` / `4` / `5` — соответствуют h1–h5</td></tr>
+    <tr><td>`Skeleton` (boolean)</td><td>(custom)</td><td>Серый placeholder вместо текста при загрузке</td></tr>
+  </tbody>
+</table>
+
+### Text
+
+```jsx
+<Text
+  size="base"          // Size: sm / base / lg
+  strong={false}       // Strong: medium font weight
+  caps={false}         // CAPS: uppercase
+  disabled={false}
+  skeleton={false}
+>
+  Text content
+</Text>
+```
+
+<table>
+  <thead>
+    <tr><th>Figma</th><th>AntD prop</th><th>Что делает</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>`Size` (variant)</td><td>(via style)</td><td>`sm` (13) / `base` (14) / `lg` (16)</td></tr>
+    <tr><td>`Strong` (boolean)</td><td>`Typography.Text` `strong`</td><td>Medium font-weight (500)</td></tr>
+    <tr><td>`CAPS` (boolean)</td><td>(custom)</td><td>`text-transform: uppercase`</td></tr>
+    <tr><td>`Disabled` (boolean)</td><td>`Typography.Text` `disabled`</td><td>Цвет --color-text-disabled</td></tr>
+    <tr><td>`Skeleton` (boolean)</td><td>(custom)</td><td>Placeholder-блок вместо текста</td></tr>
+  </tbody>
+</table>
+
+### Link
+
+```jsx
+<Link
+  size="base"          // Size: sm / base / lg
+  type="primary"       // Type: primary / default / danger
+  disabled={false}
+  href="..."
+  target="_blank"
+>
+  Click me
+</Link>
+```
+
+<table>
+  <thead>
+    <tr><th>Figma</th><th>AntD prop</th><th>Что делает</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>`Size` (variant)</td><td>(via style)</td><td>`sm` / `base` / `lg`</td></tr>
+    <tr><td>`Type` (variant)</td><td>(via color override)</td><td>`primary` (синий) / `default` (тёмный) / `danger` (красный)</td></tr>
+    <tr><td>`Disabled` (boolean)</td><td>`Typography.Link` `disabled`</td><td>Не кликабельна, цвет text-disabled</td></tr>
+  </tbody>
+</table>
+
+### Label
+
+```jsx
+<Label
+  size="default"       // Size: sm / default
+  type="default"       // Type: default / secondary / disabled / white / primary / error / success / warning
+  strong={false}       // Strong: medium font weight
+  inverse={false}      // Inverse: dark pill background (для type="white")
+>
+  Label
+</Label>
+```
+
+<table>
+  <thead>
+    <tr><th>Figma</th><th>Свойство</th><th>Что делает</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>`Size` (variant)</td><td>`size`</td><td>`sm` (13) / `default` (14)</td></tr>
+    <tr><td>`Type` (variant)</td><td>`type`</td><td>8 цветовых ролей: default / secondary / disabled / white / primary / error / success / warning</td></tr>
+    <tr><td>`Strong` (boolean)</td><td>`strong`</td><td>Medium font-weight</td></tr>
+    <tr><td>`Inverse` (boolean)</td><td>`inverse`</td><td>Тёмная pill-подложка (для `type="white"` на светлом фоне)</td></tr>
+  </tbody>
+</table>
+
+### Не используется из AntD
+
+- `Typography.Paragraph` — заменён на `<Text>` с правильным размером.
+- `editable`, `copyable`, `ellipsis` props — runtime-функционал, добавим по необходимости.
+- `code`, `mark`, `keyboard` — не используются в платформе.
+
+## Рекомендации по использованию
+
+**Title — иерархия страниц**
+- `Level=1` — заголовок страницы (один на экран).
+- `Level=2` — заголовки крупных секций.
+- `Level=3` — карточки, блоки внутри секций.
+- `Level=4` / `Level=5` — подзаголовки внутри карточек, заголовки списков.
+- `Skeleton=True` — при загрузке (вместо spinner для inline-кейсов).
+
+**Text — параграфы и inline-контент**
+- `size=base` (14px) — стандарт для основного текста.
+- `size=sm` (13px) — captions, sub-info под основным текстом.
+- `size=lg` (16px) — emphasis-параграфы (intro, описания крупного контента).
+- `strong=true` — для семантического выделения внутри параграфа.
+- `caps=true` — для overline-меток секций (CTA, header bars).
+
+**Link — ссылки в трёх контекстах**
+- `type=primary` — обычные ссылки в тексте, навигация.
+- `type=default` — inline-actions в таблицах (View, Edit), где синий слишком акцентный.
+- `type=danger` — деструктивные действия (Delete, Remove account).
+- Размер обычно совпадает с окружающим текстом (`size=base` в параграфе, `size=sm` в footer).
+
+**Label — компактные цветные метки**
+- `default` — обычные label-ы для полей формы.
+- `secondary` — описания, hint-text.
+- `disabled` — неактивные элементы.
+- `primary` — выделение интерактивного элемента (например, ссылка-кликабельная label).
+- `error` / `warning` / `success` — статусные метки в таблицах, badge-ах.
+- `white` + `inverse=true` — для тёмных фонов, баннеров, тостов.
+- `strong=true` — для усиления label-а в плотных интерфейсах (header таблицы).
+
+## Чеклист QA
+
+### Шрифт
+- [ ] Везде Rubik (не Inter, не системный)
+- [ ] Веса: Regular (400) или Medium (500); Bold не используется
+- [ ] Буквопрбел: `--letter-spacing-default` (0.13px)
+
+### Размеры
+- [ ] Title L1=38, L2=30, L3=24, L4=18, L5=16 (font-size в px)
+- [ ] Text sm=13, base=14, lg=16
+- [ ] Label sm=13, default=14
+
+### Цвета
+- [ ] Все color через токены `--color-text-*` или `--color-status-*`
+- [ ] Никаких hex-значений (#001029, rgba(...)) в style/CSS
+- [ ] Title — `--color-text-heading`, Text — `--color-text-primary`
+- [ ] Link primary — `--color-text-link`, danger — `--color-status-error`
+- [ ] Label inverse — фиксированный `#001029` фон (одинаков в light/dark)
+
+### Поведение
+- [ ] Link с `disabled` не кликабельна, не имеет underline на hover
+- [ ] Skeleton показывает placeholder с `--color-bg-hover` фоном
+- [ ] Disabled text имеет цвет `--color-text-disabled` (25% opacity)
+
+### AntD-Ready
+- [ ] Имена компонентов в Figma — `Typography/Title`, `Typography/Text`, `Typography/Link`, `Typography/Label`
+- [ ] Размеры (Size) единообразны между Text и Label (sm)
+- [ ] Type-значения для Link и Label не пересекаются с другими доменами (нет своих `info`, `accent` ролей)

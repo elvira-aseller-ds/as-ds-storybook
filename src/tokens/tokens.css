@@ -31,6 +31,48 @@ body {
   color: var(--color-text-primary);
 }
 
+/* Storybook Docs tables — override zebra-stripe + cell backgrounds for both
+   themes so MDX tables stay legible. Storybook ships light hardcoded colors
+   for .sbdocs table tr/td/th. */
+[data-theme] .sbdocs.sbdocs-wrapper table,
+[data-theme] .sbdocs.sbdocs-wrapper tbody,
+[data-theme] .sbdocs.sbdocs-wrapper thead,
+[data-theme] .sbdocs.sbdocs-wrapper tr,
+[data-theme] .sbdocs.sbdocs-wrapper td,
+[data-theme] .sbdocs.sbdocs-wrapper th {
+  background: transparent !important;
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border-subtle) !important;
+}
+
+[data-theme] .sbdocs.sbdocs-wrapper table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+[data-theme] .sbdocs.sbdocs-wrapper th,
+[data-theme] .sbdocs.sbdocs-wrapper td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border-subtle) !important;
+  text-align: left;
+}
+
+[data-theme] .sbdocs.sbdocs-wrapper thead th {
+  background: var(--color-bg-subtle) !important;
+  font-weight: 500;
+  color: var(--color-text-secondary) !important;
+}
+
+/* Inline code chunks — use bg-subtle for both themes (was hardcoded white) */
+[data-theme] .sbdocs.sbdocs-wrapper code,
+[data-theme] .sbdocs.sbdocs-wrapper :not(pre) > code {
+  background: var(--color-bg-subtle) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  padding: 2px 6px;
+  border-radius: var(--radius-interactive);
+}
+
 
 :root,
 [data-theme='light'] {

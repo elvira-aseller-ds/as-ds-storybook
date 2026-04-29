@@ -44,3 +44,10 @@ export { BsThreeDots as IconMore } from 'react-icons/bs';
 
 // Settings
 export { IoSettingsOutline as IconSettings } from 'react-icons/io5';
+
+// Identity / Auth
+export { AiOutlineUser as IconUser } from 'react-icons/ai';
+export { AiOutlineMail as IconMail } from 'react-icons/ai';
+export { AiOutlineLock as IconLock } from 'react-icons/ai';
+export { AiFillCloseCircle as IconCloseCircleFill } from 'react-icons/ai';
+export { AiFillCheckCircle as IconCheckCircleFill } from 'react-icons/ai';

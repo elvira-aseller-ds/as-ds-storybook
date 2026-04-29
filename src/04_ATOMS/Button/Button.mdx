@@ -1,0 +1,122 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Универсальная кнопка действия. Обёртка над antd `Button`, темизованная через ConfigProvider.
+
+Figma source: [Button COMPONENT_SET (56:758)](https://www.figma.com/design/VMTYDDrmUYtsva4gGPVEcg/ASeller-DS-v0.1.0?node-id=56-758) — 7 осей варьирования.
+
+## Соответствие AntDesign
+
+```jsx
+<Button
+  type="primary"        // Type axis
+  size="middle"         // Size axis
+  shape="default"       // Shape axis
+  danger={false}        // Danger boolean
+  disabled={false}      // Disabled boolean
+  loading={false}       // Loading boolean
+  block={false}         // Block boolean
+  icon={<IconPlus />}   // Icon slot
+  iconPosition="start"  // Icon position
+  onClick={handler}
+>
+  Label
+</Button>
+```
+
+<table>
+  <thead>
+    <tr><th>Figma property</th><th>AntD prop</th><th>Что делает</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>`Type` (variant)</td><td>`Button` `type`</td><td>`primary` / `default` / `dashed` / `ghost` / `link` / `text`</td></tr>
+    <tr><td>`Size` (variant)</td><td>`Button` `size`</td><td>`small` (22) / `middle` (32) / `large` (40)</td></tr>
+    <tr><td>`Shape` (variant)</td><td>`Button` `shape`</td><td>`default` / `circle` / `round`</td></tr>
+    <tr><td>`Danger` (boolean)</td><td>`Button` `danger`</td><td>Красная подсветка для деструктивных действий</td></tr>
+    <tr><td>`Disabled` (boolean)</td><td>`Button` `disabled`</td><td>Серый фон, не реагирует на hover/click</td></tr>
+    <tr><td>`Loading` (boolean)</td><td>`Button` `loading`</td><td>Спиннер по центру, контент скрыт, не кликабельна</td></tr>
+    <tr><td>`Block` (boolean)</td><td>`Button` `block`</td><td>Ширина 100% родительского контейнера</td></tr>
+    <tr><td>`Icon` (instance-swap)</td><td>`Button` `icon`</td><td>Иконка слева (или справа при `iconPosition="end"`)</td></tr>
+    <tr><td>`Label` (text)</td><td>`children`</td><td>Текст кнопки</td></tr>
+  </tbody>
+</table>
+
+### Особенность Ghost
+
+ASeller `type="ghost"` — это уникальный API: внутри маппится на antd `ghost + type="primary"` (обводка primary-цветом, прозрачный bg). Унифицированный prop вместо двух раздельных antd-проп.
+
+### Не используется из AntD
+
+- `htmlType` — `submit` / `reset` / `button` пробрасывается напрямую без axis.
+- `target`, `href` — для type=`link` пробрасываются напрямую.
+- `iconPosition` — есть в API, но не вынесено в Figma как axis (используется редко).
+
+## Рекомендации по использованию
+
+**Type — выбор по семантике**
+- `primary` — главное действие на странице/форме (один на экран). Save, Submit, Continue.
+- `default` — вторичные действия, equally weighted. Cancel, Reset, Filter.
+- `dashed` — добавление новых элементов в список / коллекцию (Add row, New filter).
+- `ghost` — действия на цветных или фоновых баннерах (когда нужен primary поверх dark).
+- `link` — навигационные действия внутри текста или таблицы (View, Edit ссылками).
+- `text` — минимальные действия в menu / dropdown / toolbar (без обводки).
+
+**Size — по плотности интерфейса**
+- `large` (40) — основные CTA, mobile-first, hero-секции.
+- `middle` (32) — стандарт. Формы, диалоги, карточки.
+- `small` (22) — таблицы, фильтры, toolbar, inline-actions.
+
+**Shape**
+- `default` — обычная прямоугольная (с radius-card 16px).
+- `circle` — только для icon-only кнопок (квадратная w=h, иконка по центру).
+- `round` — pill-shaped, для редких декоративных кейсов (например, статусные badge-buttons).
+
+**Danger**
+- Используется с любым `type`. На Primary — красная заливка, на Default/Dashed — красная обводка.
+- Применять только для **деструктивных** действий: Delete, Remove, Discard.
+- Не использовать как акцентный цвет — для статусных тегов есть Tag/Badge.
+
+**Loading**
+- Заменяет контент на spinner. Используется при async-операциях (form submit, API request).
+- Кнопка автоматически disabled — повторный click невозможен.
+
+**Block**
+- Растягивает на всю ширину контейнера. Используется в mobile-форм, narrow-сайдбарах, drawer-футерах.
+
+**Icon-only кнопки**
+- `<Button shape="circle" icon={<...>} />` — без `children`. Tooltip обязателен (для accessibility).
+
+## Чеклист QA
+
+### Структура
+- [ ] У каждой кнопки есть `onClick` или `htmlType="submit"`/`href` (не "мёртвая" кнопка)
+- [ ] Icon-only кнопки имеют `aria-label` или Tooltip
+- [ ] Primary-кнопка одна на видимом экране (или это grouped action)
+
+### Размеры и токены
+- [ ] Высота: `small=22`, `middle=32`, `large=40`
+- [ ] Border-radius: `--radius-card` (16px) для всех Size
+- [ ] Шрифт Rubik Regular (не Inter)
+- [ ] Все цвета через токены (при смене темы перекрашиваются)
+
+### Состояния
+- [ ] Hover: bg меняется на hover-token
+- [ ] Active (pressed): bg меняется на active-token
+- [ ] Focus-visible: border-focus
+- [ ] Disabled: --color-bg-disabled + --color-text-disabled
+- [ ] Loading: spinner по центру, контент скрыт
+
+### Danger
+- [ ] Primary + Danger: красная заливка (--color-status-error)
+- [ ] Default + Danger: красная обводка + красный текст
+- [ ] Используется только для деструктивных действий
+
+### AntD-Ready
+- [ ] Имя в Figma — `Button`
+- [ ] Description содержит `ANTD MAPPING` и `NOT USED FROM ANTD` блоки
+- [ ] Все 6 значений Type визуально различимы
+- [ ] Ghost — внутри маппится на ghost+primary (документировано в `NOT USED FROM ANTD`)

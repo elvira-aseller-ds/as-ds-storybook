@@ -18,9 +18,67 @@ import { Meta } from "@storybook/addon-docs/blocks";
 - Features
 - Assets
 
-## Как работать
 
-1. Найти нужный паттерн
+## Базис: AntDesign + кастомизация под бренд
+
+ASeller DS — это **AntDesign 5.x с кастомизированными токенами под бренд**, не самописная DS. Мы не переопределяем компоненты CSS-ом, а конфигурируем их через `ConfigProvider` + `theme.token` / `theme.components`.
+
+Single-source reference: [ASAndD v0 — AntDesign Theme Editor](https://www.figma.com/design/9G3xzoR6R2wravE05ZcAod/Ant-Design-Vue?node-id=3051-9).
+
+<table>
+  <thead>
+    <tr><th>Тема</th><th>Algorithm</th><th>Источник токенов</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Light</td><td>`compact`</td><td>Явные брендовые токены + AntD дефолты, пересчитанные алгоритмом</td></tr>
+    <tr><td>Dark</td><td>`dark`</td><td>Те же явные токены (с тёмными hex) + AntD дефолты, пересчитанные `darkAlgorithm`</td></tr>
+  </tbody>
+</table>
+
+**Что мы задаём явно** (в `src/tokens/aseller-tokens.ts` + `antd-theme.ts`):
+- `colorPrimary`, `colorBase`, `colorSecondary` — брендовая палитра
+- `colorSuccess`, `colorError`, `colorWarning` — статусы
+- `colorTextBase`, `colorBgContainer`, `colorBgLayout`, `colorBgSpotlight`, `colorBgMask`, `colorBorder`, `colorBorderSecondary` — surface/text роли
+- Шрифт `Rubik` + размеры (14/16/20/24/30/32 для headings)
+- Spacing `sizeUnit=5`, шкала margin/padding (5/10/15/20/25/35/55)
+- `borderRadius=16` для кнопок/инпутов/pill-элементов; `borderRadiusSM=8` для диалогов/карточек
+- `controlHeight`: 32 (datagrids) / 40 (стандартный) / 22 (label)
+
+**Что НЕ задаём** (выводится AntD алгоритмом из явных токенов):
+- `colorPrimaryHover`, `colorPrimaryActive`, `colorPrimaryBg`, `colorPrimaryBorder` — все hover/active/bg-варианты primary
+- Аналогично для success/error/warning/info
+- Автогенерируемые градации `colorFill`, `colorTextSecondary` и т.д.
+
+Это ключевое: при смене темы (light/dark) **алгоритм сам пересчитывает** все производные значения, а ASeller DS поддерживает только базовые брендовые токены. Поэтому количество явно задокументированных токенов остаётся управляемым.
+
+### Три уровня токенов
+
+Source: ASeller Figma Kit (`VMTYDDrmUYtsva4gGPVEcg`)
+
+<table>
+  <thead>
+    <tr><th>Слой</th><th>Figma node</th><th>Что содержит</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>**01 Primitives**</td><td>`32:3074`</td><td>Физические шкалы: Grey / Blue / Red / Green / Yellow, размеры контролов</td></tr>
+    <tr><td>**02 Semantic**</td><td>`35:3020`</td><td>Роли: Action / Text / Icon / Background / Border / Status — с light/dark парой</td></tr>
+    <tr><td>**03 Typography**</td><td>`35:4619`</td><td>Font-size, family, weight, line-height, letter-spacing + composite text styles</td></tr>
+    <tr><td>Component tokens</td><td>—</td><td>Локальные overrides внутри компонентов (antd `components.Button` и т.д.)</td></tr>
+  </tbody>
+</table>
+
+**Правило подчинения:** Component → Semantic → Primitive. Компонент не должен ссылаться на Primitive напрямую.
+
+### Workflow обновления токенов
+
+1. Дизайнер меняет значения в [AntD Theme Editor](https://ant.design/theme-editor).
+2. Экспорт кода → коммит в `src/tokens/aseller-tokens.ts` + `antd-theme.ts`.
+3. Обновление этой страницы и MDX-доков затронутых компонентов в том же PR.
+4. QA запускает snapshot-tests Chromatic → зелёный свет.
+
+### Принципы выбора компонентов
+
+1. Найти нужный паттерн в Patterns
 2. Проверить, есть ли нужный вариант
 3. Использовать существующий компонент
 4. Не создавать новый экран, если это вариант существующего паттерна
